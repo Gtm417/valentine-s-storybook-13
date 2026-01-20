@@ -6,91 +6,93 @@
 
 @layer base {
   :root {
-    /* Romantic Valentine's palette */
-    --background: 20 33% 98%;
-    --foreground: 346 45% 20%;
+    /* Deep Romantic Red palette */
+    --background: 0 20% 97%;
+    --foreground: 0 30% 15%;
 
-    --card: 20 40% 96%;
-    --card-foreground: 346 45% 20%;
+    --card: 0 50% 95%;
+    --card-foreground: 0 30% 15%;
 
-    --popover: 20 40% 96%;
-    --popover-foreground: 346 45% 20%;
+    --popover: 0 50% 95%;
+    --popover-foreground: 0 30% 15%;
 
-    --primary: 346 77% 50%;
-    --primary-foreground: 20 33% 98%;
+    --primary: 0 75% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 40% 90%;
-    --secondary-foreground: 346 45% 25%;
+    --secondary: 0 40% 90%;
+    --secondary-foreground: 0 50% 30%;
 
-    --muted: 20 20% 92%;
-    --muted-foreground: 346 20% 45%;
+    --muted: 0 20% 92%;
+    --muted-foreground: 0 15% 45%;
 
-    --accent: 340 60% 85%;
-    --accent-foreground: 346 45% 25%;
+    --accent: 0 60% 88%;
+    --accent-foreground: 0 50% 30%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 340 30% 85%;
-    --input: 340 30% 85%;
-    --ring: 346 77% 50%;
+    --border: 0 30% 85%;
+    --input: 0 30% 85%;
+    --ring: 0 75% 45%;
 
     --radius: 1rem;
 
-    /* Custom romantic colors */
-    --rose-deep: 346 77% 45%;
-    --rose-light: 340 60% 75%;
-    --rose-soft: 340 50% 92%;
-    --cream: 35 40% 95%;
-    --gold: 38 70% 55%;
-    --blush: 350 45% 88%;
+    /* Deep romantic reds */
+    --rose-deep: 0 80% 40%;
+    --rose-vivid: 0 85% 50%;
+    --rose-light: 0 60% 70%;
+    --rose-soft: 0 50% 92%;
+    --cream: 30 40% 96%;
+    --gold: 38 80% 55%;
+    --blush: 0 45% 88%;
 
     /* Gradients */
-    --gradient-romantic: linear-gradient(135deg, hsl(346 77% 50%), hsl(340 60% 65%));
-    --gradient-soft: linear-gradient(180deg, hsl(20 33% 98%), hsl(340 50% 96%));
-    --gradient-heart: radial-gradient(ellipse at center, hsl(346 77% 55%), hsl(346 77% 40%));
+    --gradient-romantic: linear-gradient(135deg, hsl(0 80% 45%), hsl(350 70% 55%));
+    --gradient-heart: radial-gradient(ellipse at 30% 30%, hsl(0 75% 55%), hsl(0 80% 40%) 60%, hsl(0 85% 30%));
+    --gradient-bg: radial-gradient(ellipse at center, hsl(0 30% 95%), hsl(0 20% 90%));
 
     /* Shadows */
-    --shadow-romantic: 0 10px 40px -10px hsl(346 77% 50% / 0.3);
-    --shadow-card: 0 4px 20px -2px hsl(346 50% 30% / 0.15);
-    --shadow-float: 0 20px 60px -15px hsl(346 50% 30% / 0.25);
+    --shadow-romantic: 0 10px 40px -10px hsl(0 80% 40% / 0.4);
+    --shadow-heart: 0 20px 60px -10px hsl(0 80% 35% / 0.5), inset 0 -5px 20px hsl(0 80% 30% / 0.2);
+    --shadow-glow: 0 0 40px hsl(0 80% 50% / 0.3);
   }
 
   .dark {
-    --background: 346 30% 8%;
-    --foreground: 20 33% 95%;
+    --background: 0 30% 8%;
+    --foreground: 0 20% 95%;
 
-    --card: 346 25% 12%;
-    --card-foreground: 20 33% 95%;
+    --card: 0 25% 12%;
+    --card-foreground: 0 20% 95%;
 
-    --popover: 346 25% 12%;
-    --popover-foreground: 20 33% 95%;
+    --popover: 0 25% 12%;
+    --popover-foreground: 0 20% 95%;
 
-    --primary: 346 70% 60%;
-    --primary-foreground: 346 30% 10%;
+    --primary: 0 70% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 30% 20%;
-    --secondary-foreground: 20 33% 90%;
+    --secondary: 0 30% 18%;
+    --secondary-foreground: 0 20% 90%;
 
-    --muted: 346 20% 18%;
-    --muted-foreground: 340 20% 65%;
+    --muted: 0 20% 18%;
+    --muted-foreground: 0 15% 65%;
 
-    --accent: 340 40% 25%;
-    --accent-foreground: 20 33% 90%;
+    --accent: 0 40% 22%;
+    --accent-foreground: 0 20% 90%;
 
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 346 25% 20%;
-    --input: 346 25% 20%;
-    --ring: 346 70% 60%;
+    --border: 0 25% 20%;
+    --input: 0 25% 20%;
+    --ring: 0 70% 55%;
 
-    --rose-deep: 346 70% 55%;
-    --rose-light: 340 50% 45%;
-    --rose-soft: 340 30% 20%;
-    --cream: 35 20% 15%;
+    --rose-deep: 0 70% 50%;
+    --rose-vivid: 0 80% 55%;
+    --rose-light: 0 50% 40%;
+    --rose-soft: 0 30% 18%;
+    --cream: 30 15% 12%;
     --gold: 38 60% 50%;
-    --blush: 350 30% 25%;
+    --blush: 0 30% 22%;
   }
 }
 
@@ -102,6 +104,7 @@
   body {
     @apply bg-background text-foreground font-serif antialiased;
     font-family: 'Lora', serif;
+    background: var(--gradient-bg);
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -110,66 +113,80 @@
 }
 
 @layer components {
-  .heart-shape {
+  .heart-container {
     position: relative;
+    width: 320px;
+    height: 300px;
+    filter: drop-shadow(0 20px 40px hsl(0 80% 40% / 0.35));
+  }
+
+  @media (min-width: 640px) {
+    .heart-container {
+      width: 400px;
+      height: 380px;
+    }
+  }
+
+  .heart-shape {
+    position: absolute;
     width: 100%;
     height: 100%;
     background: var(--gradient-heart);
-    transform: rotate(-45deg);
-    border-radius: 50% 50% 0 50%;
-    box-shadow: var(--shadow-float);
+    clip-path: path('M200,40 C240,0 320,0 320,80 C320,160 200,280 200,280 C200,280 80,160 80,80 C80,0 160,0 200,40');
+    transform: scale(1.2);
+    transform-origin: center;
   }
 
-  .heart-shape::before {
-    content: '';
+  @media (min-width: 640px) {
+    .heart-shape {
+      clip-path: path('M200,35 C245,-5 340,-5 340,85 C340,175 200,300 200,300 C200,300 60,175 60,85 C60,-5 155,-5 200,35');
+    }
+  }
+
+  .heart-content {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 50%;
-    top: -50%;
-    left: 0;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2.5rem 4rem;
+    text-align: center;
+    z-index: 10;
   }
 
-  .heart-shape::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    border-radius: 50%;
-    left: 50%;
-    top: 0;
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
   }
 
-  .page-content {
-    @apply absolute inset-0 flex flex-col items-center justify-center p-8 text-center;
-    transform: rotate(45deg);
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 20px hsl(0 80% 50% / 0.4)); }
+    50% { filter: drop-shadow(0 0 35px hsl(0 80% 50% / 0.6)); }
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.08); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.05); }
   }
 
   .floating-heart {
     animation: float 3s ease-in-out infinite;
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
-  }
-
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.05); }
-    50% { transform: scale(1); }
-    75% { transform: scale(1.05); }
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
   }
 
   .heartbeat {
-    animation: heartbeat 1.5s ease-in-out infinite;
+    animation: heartbeat 1.2s ease-in-out infinite;
   }
 
   .sparkle {
@@ -177,20 +194,42 @@
   }
 
   .romantic-text {
-    @apply text-foreground;
-    font-family: 'Playfair Display', serif;
-    text-shadow: 0 2px 10px hsl(346 77% 50% / 0.15);
+    color: hsl(var(--primary-foreground));
+    text-shadow: 0 2px 8px hsl(0 80% 30% / 0.3);
   }
 
-  .love-card {
-    @apply bg-card rounded-3xl p-6;
-    box-shadow: var(--shadow-card);
-    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--cream)));
+  .template-text {
+    color: hsl(var(--primary-foreground));
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 1px 4px hsl(0 80% 30% / 0.2);
+  }
+
+  .fill-input {
+    background: hsl(0 0% 100% / 0.2);
+    border-bottom: 2px dashed hsl(0 0% 100% / 0.6);
+    color: hsl(var(--primary-foreground));
+    padding: 0.25rem 0.5rem;
+    min-width: 120px;
+    text-align: center;
+    font-family: 'Lora', serif;
+    font-style: italic;
+    transition: all 0.2s;
+  }
+
+  .fill-input:focus {
+    outline: none;
+    background: hsl(0 0% 100% / 0.3);
+    border-bottom-color: hsl(0 0% 100%);
+  }
+
+  .fill-input::placeholder {
+    color: hsl(0 0% 100% / 0.5);
+    font-style: italic;
   }
 }
 
 @layer utilities {
-  .text-romantic {
+  .text-romantic-gradient {
     background: var(--gradient-romantic);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
