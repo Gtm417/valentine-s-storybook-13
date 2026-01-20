@@ -1,6 +1,7 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": true,
+  "homepage": "https://gtm417.github.io/valentine-s-storybook-13/",
   "version": "0.0.0",
   "homepage": "https://gtm417.github.io/valentine-s-storybook-13/",
   "type": "module",
@@ -51,6 +52,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.27.4",
+    "gh-pages": "^6.3.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
