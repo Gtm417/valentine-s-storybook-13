@@ -1,11 +1,112 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Heart } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ValentineBook from '@/components/ValentineBook';
+import FloatingHearts from '@/components/FloatingHearts';
+
+const TOTAL_PAGES = 100;
+
+const createInitialPages = () => 
+  Array.from({ length: TOTAL_PAGES }, (_, i) => 
+    i === TOTAL_PAGES - 1 ? "I Love You Forever ❤️" : ""
+  );
 
 const Index = () => {
+  const [myPages, setMyPages] = useState<string[]>(createInitialPages);
+  const [herPages, setHerPages] = useState<string[]>(createInitialPages);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background relative overflow-hidden">
+      {/* Background gradient */}
+      <div 
+        className="absolute inset-0 opacity-50"
+        style={{ background: 'var(--gradient-soft)' }}
+      />
+      
+      {/* Floating hearts background */}
+      <FloatingHearts />
+      
+      {/* Main content */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        {/* Header */}
+        <motion.header 
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="pt-8 pb-4 text-center"
+        >
+          <div className="flex items-center justify-center gap-3 mb-2">
+            <Heart className="w-8 h-8 text-primary fill-primary heartbeat" />
+            <h1 className="text-4xl md:text-5xl font-display text-romantic">
+              Our Love Story
+            </h1>
+            <Heart className="w-8 h-8 text-primary fill-primary heartbeat" />
+          </div>
+          <p className="text-muted-foreground font-serif text-lg">
+            100 pages of love, just for us
+          </p>
+        </motion.header>
+
+        {/* Tabs */}
+        <div className="flex-1 flex flex-col items-center px-4 pb-8">
+          <Tabs defaultValue="me" className="w-full max-w-2xl">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8 bg-secondary/50 backdrop-blur-sm">
+              <TabsTrigger 
+                value="me" 
+                className="gap-2 font-display text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
+                <Heart className="w-4 h-4" />
+                For Me
+              </TabsTrigger>
+              <TabsTrigger 
+                value="her" 
+                className="gap-2 font-display text-lg data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
+                <Heart className="w-4 h-4" />
+                For Her
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="me" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <ValentineBook 
+                  pages={myPages} 
+                  onPagesChange={setMyPages}
+                  tabName="My"
+                />
+              </motion.div>
+            </TabsContent>
+
+            <TabsContent value="her" className="mt-0">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <ValentineBook 
+                  pages={herPages} 
+                  onPagesChange={setHerPages}
+                  tabName="Her"
+                />
+              </motion.div>
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        {/* Footer */}
+        <motion.footer 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="py-4 text-center text-muted-foreground font-serif text-sm"
+        >
+          Made with <Heart className="w-4 h-4 inline text-primary fill-primary" /> for Valentine's Day
+        </motion.footer>
       </div>
     </div>
   );
