@@ -3,7 +3,6 @@
   "private": true,
   "homepage": "https://gtm417.github.io/valentine-s-storybook-13/",
   "version": "0.0.0",
-  "homepage": "https://gtm417.github.io/valentine-s-storybook-13/",
   "type": "module",
   "scripts": {
     "dev": "vite",
