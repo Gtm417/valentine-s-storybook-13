@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Edit3, Check, Heart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import HeartPage from './HeartPage';
 import { pageTemplates } from '@/data/pageTemplates';
@@ -13,7 +13,6 @@ interface ValentineBookProps {
 
 const ValentineBook = ({ pages, onPagesChange, tabName }: ValentineBookProps) => {
   const [currentPage, setCurrentPage] = useState(0);
-  const [isEditing, setIsEditing] = useState(false);
   const [direction, setDirection] = useState(0);
 
   const totalPages = pages.length;
@@ -69,26 +68,6 @@ const ValentineBook = ({ pages, onPagesChange, tabName }: ValentineBookProps) =>
         <Heart className="w-5 h-5 text-primary fill-primary heartbeat" />
       </motion.div>
 
-      {/* Edit button */}
-      <Button
-        onClick={() => setIsEditing(!isEditing)}
-        variant={isEditing ? "default" : "outline"}
-        size="sm"
-        className="gap-2"
-      >
-        {isEditing ? (
-          <>
-            <Check className="w-4 h-4" />
-            Done
-          </>
-        ) : (
-          <>
-            <Edit3 className="w-4 h-4" />
-            Edit
-          </>
-        )}
-      </Button>
-
       {/* Heart with page flip animation */}
       <div className="relative flex justify-center" style={{ perspective: '1200px' }}>
         <AnimatePresence mode="wait" custom={direction}>
@@ -112,7 +91,6 @@ const ValentineBook = ({ pages, onPagesChange, tabName }: ValentineBookProps) =>
               totalPages={totalPages}
               templateText={pageTemplates[currentPage] || ""}
               filledText={pages[currentPage]}
-              isEditing={isEditing}
               onFilledTextChange={updatePageContent}
               isFinalPage={currentPage === totalPages - 1}
             />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Heart } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -6,13 +6,38 @@ import ValentineBook from '@/components/ValentineBook';
 import FloatingHearts from '@/components/FloatingHearts';
 
 const TOTAL_PAGES = 100;
+const STORAGE_KEY_MY = 'valentine-my-pages';
+const STORAGE_KEY_HER = 'valentine-her-pages';
 
 const createInitialPages = () => 
   Array.from({ length: TOTAL_PAGES }, () => "");
 
+const loadPages = (key: string): string[] => {
+  try {
+    const saved = localStorage.getItem(key);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length === TOTAL_PAGES) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to load pages from localStorage:', e);
+  }
+  return createInitialPages();
+};
+
 const Index = () => {
-  const [myPages, setMyPages] = useState<string[]>(createInitialPages);
-  const [herPages, setHerPages] = useState<string[]>(createInitialPages);
+  const [myPages, setMyPages] = useState<string[]>(() => loadPages(STORAGE_KEY_MY));
+  const [herPages, setHerPages] = useState<string[]>(() => loadPages(STORAGE_KEY_HER));
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_MY, JSON.stringify(myPages));
+  }, [myPages]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_HER, JSON.stringify(herPages));
+  }, [herPages]);
 
   return (
     <div className="min-h-screen relative overflow-hidden">
