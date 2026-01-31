@@ -15,7 +15,7 @@ import {
   isFirebaseConnected,
 } from '@/lib/firebase';
 
-const TOTAL_PAGES = 100;
+const TOTAL_PAGES = 101;
 const STORAGE_KEY_MY = 'valentine-my-pages';
 const STORAGE_KEY_HER = 'valentine-her-pages';
 
@@ -202,7 +202,7 @@ const Index = () => {
 
         {/* Tabs */}
         <div className="flex-1 flex flex-col items-center px-4 pb-6">
-          <Tabs defaultValue="me" className="w-full max-w-2xl">
+          <Tabs defaultValue="me" className="w-full">
             <TabsList className="grid w-full max-w-xs mx-auto grid-cols-2 mb-6 bg-secondary/70 backdrop-blur-sm">
               <TabsTrigger 
                 value="me" 

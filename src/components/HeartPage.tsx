@@ -21,10 +21,16 @@ const HeartPage = ({
 }: HeartPageProps) => {
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (isEditing && inputRef.current) {
-      inputRef.current.focus();
+    if (isEditing) {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+      }
     }
   }, [isEditing]);
 
@@ -44,55 +50,109 @@ const HeartPage = ({
 
   if (isFinalPage) {
     return (
-      <div className="heart-container pulse-glow">
-        <div className="heart-shape">
-          <div className="heart-shine" />
-          <div className="heart-inner-glow" />
+      <div className="relative w-full min-h-[500px] flex items-center justify-center">
+        {/* Page number */}
+        <div className="absolute top-0 right-8 text-primary/60 text-sm font-serif">
+          {pageNumber} / {totalPages}
         </div>
-        <div className="heart-content">
+
+        {/* Decorative hearts around the page */}
+        <motion.div
+          animate={{ y: [-10, 10, -10] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-12 left-12"
+        >
+          <Heart className="w-16 h-16 md:w-20 md:h-20 text-primary/30 fill-primary/20" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [10, -10, 10] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          className="absolute top-24 right-12"
+        >
+          <Heart className="w-12 h-12 md:w-16 md:h-16 text-primary/40 fill-primary/30" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [-8, 8, -8], rotate: [0, 5, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-24 left-16"
+        >
+          <Heart className="w-14 h-14 md:w-18 md:h-18 text-primary/35 fill-primary/25" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [8, -8, 8], rotate: [0, -5, 0] }}
+          transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          className="absolute bottom-32 right-20"
+        >
+          <Heart className="w-10 h-10 md:w-14 md:h-14 text-primary/45 fill-primary/35" />
+        </motion.div>
+
+        {/* Small sparkle hearts */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute top-1/3 left-1/4"
+        >
+          <Heart className="w-6 h-6 text-primary/50 fill-primary/40" />
+        </motion.div>
+
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2.3, repeat: Infinity, delay: 0.7 }}
+          className="absolute top-2/3 right-1/4"
+        >
+          <Heart className="w-8 h-8 text-primary/50 fill-primary/40" />
+        </motion.div>
+
+        {/* Central content - text input */}
+        <div className="relative z-10 flex flex-col items-start gap-6 px-4 md:px-8 lg:px-16 w-full">
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="flex flex-col items-center gap-4"
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="mb-2 self-center"
           >
-            <motion.div
-              animate={{ scale: [1, 1.15, 1] }}
-              transition={{ duration: 1.2, repeat: Infinity }}
-            >
-              <Heart className="w-12 h-12 md:w-16 md:h-16 text-white fill-white drop-shadow-lg" />
-            </motion.div>
-            
-            {isEditing ? (
-              <input
-                ref={inputRef}
-                type="text"
-                value={filledText}
-                onChange={(e) => onFilledTextChange(e.target.value)}
-                onBlur={handleInputBlur}
-                onKeyDown={handleKeyDown}
-                placeholder="Your final message..."
-                className="fill-input text-xl md:text-2xl font-display w-full"
-              />
-            ) : (
-              <h2 
-                onClick={handleBlankClick}
-                className="text-2xl md:text-3xl font-display romantic-text leading-relaxed cursor-pointer hover:opacity-80 transition-opacity"
-              >
-                {filledText || (
-                  <span className="text-white/60 border-b-2 border-dashed border-white/40 px-2">click to write...</span>
-                )}
-              </h2>
-            )}
-            
-            <Sparkles className="absolute top-16 left-1/4 w-5 h-5 text-white/80 sparkle" />
-            <Sparkles className="absolute top-20 right-1/4 w-4 h-4 text-white/80 sparkle" style={{ animationDelay: '0.7s' }} />
-            <Sparkles className="absolute bottom-24 left-1/3 w-4 h-4 text-white/80 sparkle" style={{ animationDelay: '1.4s' }} />
+            <Heart className="w-16 h-16 md:w-20 md:h-20 text-primary fill-primary drop-shadow-lg" />
           </motion.div>
-          
-          <div className="absolute bottom-8 text-white/60 text-sm font-serif">
-            {pageNumber} / {totalPages}
-          </div>
+
+          {isEditing ? (
+            <textarea
+              ref={textareaRef}
+              value={filledText}
+              onChange={(e) => onFilledTextChange(e.target.value)}
+              onBlur={handleInputBlur}
+              placeholder="Your message..."
+              rows={6}
+              className="text-xl md:text-2xl lg:text-3xl font-display text-justify text-primary bg-transparent border-2 border-primary/30 rounded-lg px-6 py-4 w-full focus:outline-none focus:border-primary transition-colors placeholder:text-primary/30 leading-relaxed resize-none indent-8"
+            />
+          ) : (
+            <div
+              onClick={handleBlankClick}
+              className="text-xl md:text-2xl lg:text-3xl font-display text-justify text-primary cursor-pointer hover:opacity-80 transition-opacity leading-relaxed px-6 py-4 w-full min-h-[200px] whitespace-pre-wrap break-words indent-8"
+            >
+              {filledText || (
+                <span className="text-primary/40 border-b-2 border-dashed border-primary/30 px-2">Click to write your message...</span>
+              )}
+            </div>
+          )}
+
+          <motion.div
+            animate={{ opacity: [0.5, 1, 0.5] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="flex gap-3 mt-2 self-center"
+          >
+            <Heart className="w-4 h-4 text-primary/60 fill-primary/50" />
+            <Heart className="w-5 h-5 text-primary/70 fill-primary/60" />
+            <Heart className="w-4 h-4 text-primary/60 fill-primary/50" />
+          </motion.div>
         </div>
+
+        {/* Sparkles decoration */}
+        <Sparkles className="absolute top-1/4 left-1/3 w-6 h-6 text-primary/40 sparkle" />
+        <Sparkles className="absolute top-1/3 right-1/3 w-5 h-5 text-primary/40 sparkle" style={{ animationDelay: '0.7s' }} />
+        <Sparkles className="absolute bottom-1/3 left-1/2 w-5 h-5 text-primary/40 sparkle" style={{ animationDelay: '1.4s' }} />
+        <Sparkles className="absolute bottom-1/4 right-1/2 w-4 h-4 text-primary/40 sparkle" style={{ animationDelay: '2s' }} />
       </div>
     );
   }

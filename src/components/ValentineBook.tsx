@@ -56,7 +56,7 @@ const ValentineBook = ({ pages, onPagesChange, tabName }: ValentineBookProps) =>
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 w-full max-w-2xl mx-auto px-4">
+    <div className="flex flex-col items-center gap-6 w-full max-w-7xl mx-auto px-4">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
