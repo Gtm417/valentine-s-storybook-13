@@ -209,14 +209,14 @@ const Index = () => {
                 className="gap-2 font-display data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
               >
                 <Heart className="w-4 h-4" />
-                For Me
+                Tima
               </TabsTrigger>
               <TabsTrigger 
                 value="her" 
                 className="gap-2 font-display data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
               >
                 <Heart className="w-4 h-4" />
-                For Her
+                Asya
               </TabsTrigger>
             </TabsList>
 
@@ -229,7 +229,7 @@ const Index = () => {
                 <ValentineBook 
                   pages={myPages} 
                   onPagesChange={setMyPages}
-                  tabName="My"
+                  tabName="Tima"
                 />
               </motion.div>
             </TabsContent>
@@ -243,7 +243,7 @@ const Index = () => {
                 <ValentineBook 
                   pages={herPages} 
                   onPagesChange={setHerPages}
-                  tabName="Her"
+                  tabName="Asya"
                 />
               </motion.div>
             </TabsContent>

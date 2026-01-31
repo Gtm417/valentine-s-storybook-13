@@ -137,7 +137,7 @@ const StorageManager = ({ onDataCleared, onDataImported }: StorageManagerProps) 
             </div>
             {Object.entries(stats).map(([key, stat]) => (
               <div key={key} className="flex justify-between text-xs">
-                <span className="text-muted-foreground">{key.includes('my') ? 'For Me' : 'For Her'}:</span>
+                <span className="text-muted-foreground">{key.includes('my') ? 'Tima' : 'Asya'}:</span>
                 <span>{stat.filledPages} pages</span>
               </div>
             ))}
